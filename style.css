@@ -1,0 +1,116 @@
+/* 1. Fondo Pastel Morado y Fucsia */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0b0ff, #ffb6c1) !important;
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+/* 2. El contenedor transparente del formulario */
+form {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 25px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 3. Estilo Morado Pastel para el botón de archivo */
+.file-upload-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.file-upload-input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-upload-label {
+    display: block;
+    background-color: #f3e5f5;
+    color: #8e24aa;
+    padding: 12px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    border: 2px solid #e1bee7;
+    transition: 0.3s;
+}
+
+.file-upload-label:hover {
+    background-color: #e1bee7;
+}
+
+/* 4. Estilo Fucsia Pastel para el botón de subir */
+.btn-submit {
+    background-color: #f8bbd0;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Efectos de Zoom para las Imágenes/Videos del Collage --- */
+
+.image-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para todos los efectos */
+    display: inline-block;
+    margin: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.3); /* Fondo traslúcido para cada tarjeta */
+    border-radius: 15px;
+    overflow: hidden; /* Asegura que el zoom no se salga de la tarjeta */
+    position: relative; /* Necesario para el posicionamiento del zoom */
+    cursor: pointer; /* Cambia el cursor para indicar interacción */
+}
+
+/* Efecto de Zoom al 50% (1.5x) al pasar el mouse */
+.image-card:hover {
+    transform: scale(1.5); /* Agranda la tarjeta un 50% */
+    box-shadow: 0 10px 20px rgba(142, 36, 170, 0.4); /* Sombra morada más intensa */
+    z-index: 10; /* Asegura que la imagen con zoom esté por encima de las otras */
+}
+
+/* Clase para el Zoom al 100% (2x) con doble clic */
+.image-card.double-clicked {
+    transform: scale(4) !important; /* Agranda la tarjeta al doble (100% más) */
+    z-index: 20; /* Aún más arriba */
+    box-shadow: 0 15px 30px rgba(255, 0, 255, 0.5); /* Sombra fucsia intensa */
+}
+
+/* Asegura que las imágenes y videos dentro de la tarjeta se adapten */
+.image-card img,
+.image-card video {
+    width: 200px;
+    border-radius: 10px;
+    display: block; /* Evita espacios extra debajo */
+}
+
+.btn-submit:hover {
+    background-color: #ff80ab;
+    transform: translateY(-2px);
+}
+
+/* 5. Los conejitos */
+.bunny-random {
+    position: fixed;
+    width: 60px !important;
+    z-index: -1;
+    pointer-events: none;
+}

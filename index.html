@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinnamoroll Collage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <div class="main-container">
+        <h1>✨ La pagina de kiuwt ✨</h1>
+        
+        <form action="/upload" method="POST" enctype="multipart/form-data" onsubmit="reaccionarWonejo()">
+            
+            <div class="file-upload-wrapper">
+                <input type="file" name="file" id="fileInput" accept="image/*,video/*" required class="file-upload-input">
+                <label for="fileInput" class="file-upload-label">
+                    <span id="label-text">Seleccionar archivo 📁</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit">✨ Subir a la Nube ✨</button>
+            
+            <p id="file-name" style="color: #8e24aa; font-size: 12px; font-weight: bold; margin-top: 5px;"></p>
+        </form>
+
+        <div class="collage-container">
+            {% for enlace in enlaces %}
+                <div class="image-card">
+                    {% if enlace.tipo == 'video' %}
+                        <video src="{{ enlace.url }}" controls style="width: 200px; border-radius: 10px;"></video>
+                    {% else %}
+                        <img src="{{ enlace.url }}" alt="Imagen" style="width: 200px; border-radius: 10px;">
+                    {% endif %}
+                    
+                    <br>
+                    <a href="{{ url_for('delete_file', indice=loop.index0) }}" class="btn-delete">
+                        Eliminar 🗑️
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        // 1. Mostrar nombre del archivo al seleccionar
+        document.getElementById('fileInput').onchange = function () {
+            const fileName = this.files[0] ? this.files[0].name : "";
+            document.getElementById('file-name').innerHTML = "Seleccionado: " + fileName;
+        };
+
+        // 2. Función de reacción y carga
+        function reaccionarWonejo() {
+            // Animación del botón
+            const btn = document.querySelector('.btn-submit');
+            if (btn) {
+                btn.innerHTML = "✨ Subiendo... ✨";
+                btn.style.backgroundColor = "#ce93d8";
+                btn.style.cursor = "not-allowed";
+                btn.disabled = true;
+            }
+
+            // Animación de los conejos
+            const bunnies = document.querySelectorAll('.bunny-random');
+            bunnies.forEach(bunny => {
+                bunny.classList.add('bunny-active');
+            });
+            
+            console.log("¡Wonejo está procesando tu archivo!");
+        }
+
+        // 3. Crear conejitos al azar
+        function generarBunnies() {
+            for (let i = 0; i < 10; i++) {
+                const conejo = document.createElement('img');
+                conejo.src = 'WONEJO.gif';
+                conejo.className = 'bunny-random';
+                
+                conejo.style.left = (Math.random() * 85) + 'vw';
+                conejo.style.top = (Math.random() * 85) + 'vh';
+                
+                document.body.appendChild(conejo);
+            }
+        }
+
+        window.onload = generarBunnies;
+    </script>
+
+<script>
+        // --- JavaScript para el Zoom con Doble Clic ---
+
+        // Selecciona todas las tarjetas de imagen/video
+        const imageCards = document.querySelectorAll('.image-card');
+
+        // Añade un escuchador de eventos para doble clic a cada tarjeta
+        imageCards.forEach(card => {
+            card.addEventListener('dblclick', function() {
+                // Alterna la clase 'double-clicked' en la tarjeta
+                // Si la clase existe, la quita; si no existe, la añade
+                this.classList.toggle('double-clicked');
+            });
+        });
+    </script>
+</body>
+</html>
+
+</body>
+</html>
