@@ -7,9 +7,9 @@ app = Flask(__name__, template_folder='.', static_folder='.')
 
 # CONFIGURACIÓN LIMPIA (Sin caracteres ocultos)
 cloudinary.config( 
-    cloud_name = "dlszw4utt", 
-    api_key = "651939736339191", 
-    api_secret = "sNjw0vO0dykSgexKuXV1TzbkV2k", 
+    cloud_name = "", 
+    api_key = "", 
+    api_secret = "", 
     secure = True
 )
 
